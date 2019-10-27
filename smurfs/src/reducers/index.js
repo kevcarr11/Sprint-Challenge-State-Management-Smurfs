@@ -1,5 +1,5 @@
 import { FETCH_SMURF_START, FETCH_SMURF_SUCCESS, FETCH_SMURF_ERROR } from "../actions"
-import { truncate } from "fs";
+
 
 const initialState = {
   smurf: null,
