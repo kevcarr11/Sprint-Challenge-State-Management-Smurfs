@@ -7,6 +7,8 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { reducer as smurfReducer } from "./reducers";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const rootReducer = combineReducers({
   smurf: smurfReducer

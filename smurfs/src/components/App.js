@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { connect } from "react-redux";
 import { fetchSmurf } from "../actions"
 import SmurfForm from "../components/SmurfForm"
+import Header from "./Header"
+import SmurfCard from "./SmurfCard";
 import "./App.css";
 
 
@@ -12,24 +14,23 @@ function App(props) {
   }, []);
   console.log(props.smurf)
   return (
-    <div className="App">
-      <SmurfForm />
-      {props.smurfError && <p>Error: {props.smurfError}</p>}
-      {props.isSmurfLoading ? (
-        <h3>Loading...</h3>
-      ) : (
-        <div>
-          <h1>Smurf Data</h1>
-          {props.smurf.map((item) => {
-            return <div key={item.id} >
-              <h2>{item.name}</h2>
-              <h3>Age: {item.age} years old</h3>
-              <h3>Height: {item.height} </h3>
-            </div>
-          })}
-        </div>
-      )}
-    </div>
+    <main>
+      <div className="App">
+        <Header />
+        <SmurfForm />
+        {props.smurfError && <p>Error: {props.smurfError}</p>}
+        {props.isSmurfLoading ? (
+          <h3>Loading...</h3>
+        ) : (
+          <div>
+            <h1 className="title" >Smurf Village</h1>
+            {props.smurf.map((item, index) => (
+             <SmurfCard key={index} item={item} />
+            ))}
+          </div>
+        )}
+      </div>
+    </main>
   )
 }
 

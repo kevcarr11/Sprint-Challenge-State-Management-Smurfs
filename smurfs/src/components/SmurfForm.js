@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Button } from 'reactstrap';
 import axios from "axios";
 
 function SmurfForm(props) {
@@ -15,11 +16,10 @@ function SmurfForm(props) {
     })
   }
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = () => {
     axios.post('http://localhost:3333/smurfs', newSmurf)
-            .then(res=> console.log(res.data))
-            .catch(err=> console.log(err))
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err))
     setNewSmurf({
       name: '',
       age: "",
@@ -31,7 +31,7 @@ function SmurfForm(props) {
       <input placeholder="Smurf Name" type="text" name="name" value={newSmurf.name} onChange={handleChanges} />
       <input placeholder="Smurf Age" type="text" name="age" value={newSmurf.age} onChange={handleChanges} />
       <input placeholder="Smurf Height" type="text" name="height" value={newSmurf.height} onChange={handleChanges} />
-      <button>Submit</button>
+      <Button color="secondary">Submit</Button>
     </form>
   )
 }
