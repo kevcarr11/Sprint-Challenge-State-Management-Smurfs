@@ -9,7 +9,7 @@ export function fetchSmurf() {
     dispatch({ type: FETCH_SMURF_START });
     
     axios
-    .get('')
+    .get('http://localhost:3333/smurfs')
     .then(res => {
       dispatch({ type: FETCH_SMURF_SUCCESS, payload: res });
     })
