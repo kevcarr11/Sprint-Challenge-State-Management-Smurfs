@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from "react-redux";
 import { fetchSmurf } from "../actions"
+import SmurfForm from "../components/SmurfForm"
 import "./App.css";
 
 
@@ -12,6 +13,7 @@ function App(props) {
   console.log(props.smurf)
   return (
     <div className="App">
+      <SmurfForm />
       {props.smurfError && <p>Error: {props.smurfError}</p>}
       {props.isSmurfLoading ? (
         <h3>Loading...</h3>
