@@ -6,7 +6,8 @@ function SmurfForm(props) {
   const [newSmurf, setNewSmurf] = useState({
     name: "",
     age: "",
-    height: ""
+    height: "",
+    id: Date.now()
   });
 
   const handleChanges = e => {
@@ -16,14 +17,16 @@ function SmurfForm(props) {
     })
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     axios.post('http://localhost:3333/smurfs', newSmurf)
-      .then(res => console.log(res.data))
+      .then(res => props.fetchSmurf())
       .catch(err => console.log(err))
     setNewSmurf({
       name: '',
       age: "",
-      height: ""
+      height: "",
+      id: Date.now()
     })
   }
   return (

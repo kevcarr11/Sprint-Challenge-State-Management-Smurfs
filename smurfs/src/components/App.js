@@ -17,17 +17,17 @@ function App(props) {
     <main>
       <div className="App">
         <Header />
-        <SmurfForm />
+        <SmurfForm fetchSmurf={props.fetchSmurf} />
         {props.smurfError && <p>Error: {props.smurfError}</p>}
         {props.isSmurfLoading ? (
           <h3>Loading...</h3>
         ) : (
-          <div>
-            <h1 className="title" >Smurf Village</h1>
-            {props.smurf.map((item, index) => (
-             <SmurfCard key={index} item={item} />
-            ))}
-          </div>
+        <div>
+          <h1 className="title" >Smurf Village</h1>
+          {props.smurf.map((item, index) => (
+          <SmurfCard key={index} item={item} fetchSmurf={props.fetchSmurf} />
+          ))}
+        </div>
         )}
       </div>
     </main>
